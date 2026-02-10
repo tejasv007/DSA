@@ -121,6 +121,8 @@ def delete_ele_af_val(head:Node,val:int):
                 return head
         temp=temp.next
     return head
+
+
 if __name__=="__main__":
     # traversal_ll(delete_head(head))
     # traversal_ll(delete_end(head))
