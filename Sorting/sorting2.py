@@ -95,6 +95,52 @@ d=Counter(a)
 #         print(-1)
 #     else:
 #         print(max(m))
-a="Donetsk Kiev 560"
-newa=(a.strip().split())
-print(newa)
+# a="Donetsk Kiev 560"
+# newa=(a.strip().split())
+# print(newa,)
+
+
+
+
+
+
+def bitMani(num:int,k:int):
+    ans=""
+    while(num>1):
+        a=num%2
+        num=num//2
+        ans=ans+str(a)
+    ans=ans+str(num)
+    new=""
+    if len(ans)<k:
+        
+        for _ in range(k-len(ans)):
+            new+="0"
+    ans=ans+new
+    return ans[::-1]
+
+print(bitMani(0,2))
+print(bitMani(1,2))
+print(bitMani(2,2))
+print(bitMani(3,2))
+
+def decimal(s:str):
+    ans=0
+    l=0
+    while(l<len(s)):
+        if s[l]=="1":
+            ans+=(2**l)
+        l+=1 
+    return ans
+
+s="chef"
+d=dict()
+j=0
+k=2
+for i in s:
+    d[j]=i
+    j+=1
+newd=dict()
+for i in range(len(s)):
+    g=d.get(i)
+    newd[g]= decimal(bitMani(i,k))

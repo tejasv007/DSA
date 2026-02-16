@@ -42,6 +42,20 @@ def linkedList1():
     b=Node(2,c)
     a=Node(1,b)
     return a
+
+# convert arr to linked list
+def convertArrToLl(arr:list):
+    if len(arr)==0:
+        return None
+    head=Node(arr[0])
+    temp=head
+    for i in range(1,len(arr)):
+        new=Node(arr[i])
+        temp.next=new
+        temp=new
+    return head
+
+
 # traversal of a linked list
 def traversal_ll(head:Node):
     temp= head
@@ -69,8 +83,12 @@ def search_ele(head:Node,n:int):
     return "not found"
 
 
-# if __name__=="__main__":
-
+if __name__=="__main__":
+    a=[1,2,3,4,5]
+    head=convertArrToLl(a)
+    # traversal_ll(head)
+    aa=5
+    print(aa//10)
 #     traversal_ll(a)
 #     print(length_ll(a))
 #     print(search_ele(a,2))
