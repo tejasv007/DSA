@@ -99,6 +99,35 @@ def countNoSetBits2(x:int):
         x=x&(x-1)
         c+=1
     return c
+
+
+# 9️⃣ minimum bit flip to convert into another number
+# use xor to calculate where is the difference in both binary number
+# then count the set bits in the ans get by above
+# TC-O(log(x^y)) SC-O(1)
+def miniBitFlip(x:int,y:int):
+    ans=x^y
+    return countNoSetBits(ans)
+
+
+# 1️⃣0️⃣ POWER SET  ---->printing all the subsets
+# subset--> portion of elements in same order
+# element is 3 then subsets be 2^3
+# TC-O(n*2^n)  SC-O(n*2^n)
+
+def powerSet(a:list):
+    n=len(a)
+    subsets=1<<n
+    ans=[]
+    for i in range(subsets):
+        l=[]
+        for j in range(n):
+            if i & (1<<j):
+                l.append(a[j]) 
+        ans.append(l)
+    return ans        
+
+
 if __name__=="__main__":
     # print(swapping(3,6))
     # print(checkiBitOrNotL(13,2))
@@ -107,5 +136,6 @@ if __name__=="__main__":
     # print(clearIthBit(13,2))
     # print(removeLastSetBit(40))
     # print(countNoSetBits(13))
-    print(countNoSetBits2(13))
-
+    # print(countNoSetBits2(13))
+    # print(miniBitFlip(10,7))
+    print(powerSet([1,2,3]))
