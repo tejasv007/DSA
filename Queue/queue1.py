@@ -79,7 +79,7 @@ full() – Check if the queue is full.
 qsize() – Get current size of the queue.
 
 '''
-
+# checked
 # building queue manual using arrays
 class Queue:
     def __init__(self,n:int):
