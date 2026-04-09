@@ -1,6 +1,6 @@
 from bt1 import Node
 from collections import deque
-# 1️⃣maximum path sum
+# 1️⃣maximum path sum-----💀💀💀💀💀💀💀💀💀💀
 # find max sum of node values of a path
 # here we use 
 def maxPathSum(root:Node,m=[]):
