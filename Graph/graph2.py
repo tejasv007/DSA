@@ -178,7 +178,7 @@ def bfs(r,c,l,grid,d):
                 d.append([r+j,c,l+1])
     
 
-#5️⃣ Detect cycle in a graph
+#5️⃣ Detect cycle in a undirected graph
 # BFS
 # undirected, having adj list
 # here we use bfs, use queue to store the node and its parent node

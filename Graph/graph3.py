@@ -245,10 +245,12 @@ def detectCycleDirectedGraph(vis,path,n,adj):
     return False
 
 
-# 5️⃣Topological Sort Algorithm | DFS---✅checked in gfg
+# 5️⃣Topological Sort Algorithm |
+#  DFS---✅checked in gfg
 # linearing order of vertices such that if there is an edge between u and v u appear before v in that ordering
 # can be made for dag only (directed acyclic graph)
-# here we use stack to store the node firstly do whole traversal till getting whole connection after add the node 
+# here we use stack to store the node, firstly do whole traversal till getting whole connection after add the node in stack 
+# reverse the stack
 # mistake use set.... dont use list to store📝📝📝📝📝⭐⭐⭐⭐⭐⭐
 def topologicalSort(adj):
     vis=set()
@@ -276,6 +278,39 @@ def topoSort( V, edges):
     return ans[::-1]
 
 
+# BFS ---KAHN's algorithm---checked✅
+# firstly form a indegree list of all vertices having no of indegrees 
+# use queue to insert the element and list to store the topo sort which store the pop ele of queue
+# if indegree is 0 insert that ele into queue
+# pop each out and subtract the indegree of those whom it has connected
+# repeat above 2 till get q empty
+# adjt=[[],[],[3],[1],[0,1],[0,2]]
+# ans [4, 5, 0, 2, 3, 1]
+# tc O(2v(two upper loop)+v+e(while loop))
+# sc O(3v)
+def topologicalSortBFS(v,adj:list):
+    d=deque()
+    indegree=[0 for i in range(v)]
+    ans=[]
+    for i in range(v):#v
+        for j in adj[i]:
+            indegree[j]+=1
+    for j in range(v):#v
+        if indegree[j]==0:
+            d.append(j)
+    # O(V+e)
+    while d:#v
+        a=d.popleft()
+        ans.append(a)
+        
+        for k in adj[a]:#2e
+            indegree[k]-=1
+            if indegree[k]==0:
+                d.append(k)
+    return ans
+
+# apply for only topo sort by bfs
+# ⭐⭐⭐⭐⭐if len of topo sort  is not equal to the number of vertices then there is an cycle in graph⭐⭐⭐⭐⭐
 if __name__=="__main__":
     # adj=[[0,0,0],[0,1,0],[1,0,1]]
     # adj=[[0,0,0],[0,1,0],[1,1,1]]
@@ -310,5 +345,6 @@ if __name__=="__main__":
     adj=[[] for i in range(4)]
     for i in edges:
         adj[i[1]].append(i[0])
-    print(adj)
-    print(detectCycleDirectedGraph([],dict(),0,adj))
+    # print(adj)
+    # print(detectCycleDirectedGraph([],dict(),0,adj))
+    print(topologicalSortBFS(6,adjt))
