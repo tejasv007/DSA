@@ -21,6 +21,7 @@ def leftRotateK(a:list, n:int,k:int):
     new2.extend(new1)
     return new2
 
+# 
 if __name__=="__main__":
     a=[1,2,3,4,5]
     print(leftRotateK(a,5,4))

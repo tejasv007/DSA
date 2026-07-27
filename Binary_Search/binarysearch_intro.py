@@ -28,7 +28,7 @@ Autocorrect/Spell Check: Dictionary words are searched using this method to quic
 
 # ---one things to be mind when writing binary search algorithm that is when element is not in the data then the high< low 
 
-# BINARY SEARCH
+# 1️⃣BINARY SEARCH
 # TC-O(logN)
 # ----iterative approach 
 # --> build 3 var low,mid and high 
@@ -63,7 +63,7 @@ def binaryRec(arr:list,ele:int,low:int,high:int):
         return binaryRec(arr,ele,low, mid-1)
   
 
-# LOWER BOUND----✔️✔️✔️✔️recheck one more time
+# 2️⃣LOWER BOUND----✔️✔️✔️✔️recheck one more time
 # --smaller index such that arr[index]>=n
 # a=[1,2,3,4,5,7,8,9,10]--> search for 6 not found then ans be 5 index
 # here if we find ele then okay 
@@ -85,7 +85,7 @@ def lowerBound(arr:list,n:int,ele:int):
       
     return res
 
-# UPPER BOUND
+# 3️⃣UPPER BOUND
 # --smaller index such that arr[index]>n
 def upperBound(arr:list, n:int, ele:int):
     l=0
@@ -101,11 +101,11 @@ def upperBound(arr:list, n:int, ele:int):
     return res
 
 
-# SEARCH INSERT POSITION
+#4️⃣ SEARCH INSERT POSITION
 # similar to lower bound if ele is missing where should be if it is inserted in array
 
 
-# FLOOR AND CEIL IN A SORTED ARRAY
+#5️⃣ FLOOR AND CEIL IN A SORTED ARRAY
 # FLOOR--> largest ele >=x
 # CEIL--> smallest ele<=x
 # if no find then floor ==ceil== ele

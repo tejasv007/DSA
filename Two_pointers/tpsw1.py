@@ -97,7 +97,7 @@ def maxConsecutiveOnesIII2(arr:list, k:int):
         if arr[r]==0:
             zeroes+=1
         if zeroes>k:
-            while(l<r):
+            while(zeroes>k):
                 if arr[l]==0:
                     zeroes-=1
                 l+=1
@@ -127,7 +127,185 @@ def maxConsecutiveOnesIII3(arr:list,k:int):
     return m
 
 
-# 4️⃣FRUITS INTO BASKETS
+# 4️⃣FRUITS INTO BASKETS--> max length of subarray with at most k type of fruits  
+# arr=[3,3,3,1,2,1,1,2,3,3,4]
+'''There is only one row of fruit trees on the farm, oriented left to right. An integer array called fruits represents the trees, where fruits[i] denotes the kind of fruit produced by the ith tree.
+The goal is to gather as much fruit as possible, adhering to the owner's stringent rules:
+1) There are two baskets available, and each basket can only contain one kind of fruit. The quantity of fruit each basket can contain is unlimited.
+
+2) Start at any tree, but as you proceed to the right, select exactly one fruit from each tree, including the starting tree. One of the baskets must hold the harvested fruits.
+
+3) Once reaching a tree with fruit that cannot fit into any basket, stop.
+Return the maximum number of fruits that can be picked.'''
+# 1  brute force
+# generate all subarrays
+# tc O(n²) 
+def fruitIntoBaskets1(arr:list):
+    ll=len(arr)
+    m=-1
+    for i in range(ll):
+        for j in range(i,ll):
+            new=set(arr[i:j+1])
+            if len(new)==2:
+                m=max(m,j-i+1)
+    return m
+
+# 2.  optimal one 
+# sw tp
+# TC O(2n) sc o(3)---tc of dict💀check it out
+# here we use a no which count the distinct no, dict which work as hashmap
+# move r till reach ll then update no and dict according to the arr[r]
+# if no>2 then move l till the len of dict key==2 
+# find the m by max(m,r-l+1)
+def fruitIntoBaskets2(arr:list):
+    l=0
+    r=0
+    no=0
+    m=-1
+    ll=len(arr)
+    no_of=dict()
+    while(r<ll):
+        if arr[r] in no_of.keys():
+            no_of[arr[r]]+=1
+        else:
+            no_of[arr[r]]=1
+            no+=1
+        if no>2:
+            while((len(no_of.keys())>2)):#doubt why no l<r
+                no_of[arr[l]]-=1
+                if no_of[arr[l]]==0:
+                    no-=1
+                    no_of.pop(arr[l])
+                    break
+                l+=1
+            l+=1
+        else:
+            m=max(m,r-l+1)
+        r+=1
+    return m
+
+
+# 3. optimal more one
+# similar to first but here we dont decrease the sw according to no
+# stay constant till get more len than the m
+# tc O(n) sc O(3)
+def fruitIntoBaskets3(arr:list):
+    l=0
+    r=0
+    no=0
+    m=-1
+    ll=len(arr)
+    no_of=dict()
+    while(r<ll):
+        if arr[r] in no_of.keys():
+            no_of[arr[r]]+=1
+        else:
+            no_of[arr[r]]=1
+            no+=1
+        if no>2:
+            if((len(no_of.keys())>2)):
+                no_of[arr[l]]-=1
+                if no_of[arr[l]]==0:
+                    no-=1
+                    no_of.pop(arr[l])
+                #     break
+                # l+=1
+            l+=1
+        else:
+            m=max(m,r-l+1)
+        r+=1
+    return m
+
+
+
+# 5️⃣ LONGEST SUBSTRING WITH MOST K DISTINCT CHARACTERS
+# s= aaabbccdd k=2
+# similar to above but here k is given
+
+# 1.brute force approach
+# create all subarrays, store the distinct element in an arr 
+# if the len of arr > k then break
+# tc O(n²)   
+def longestSubstringKChar(s:str,k:int):
+    m=-1
+    ll=len(s)
+    for i in range(ll):
+        noOf=[]
+        for j in range(i,ll):
+            if s[j] not in noOf:
+                if len(noOf)<k:
+                    m=max(m,j-i+1)
+                    noOf.append(s[j])
+                else:
+                    break
+            else:
+                
+                m=max(m,j-i+1)
+    return m
+
+
+# 2. optimal one
+# similar to 4 optimal one but here k is given
+# tc (2n) sc O(k)
+def longestSubstringKChar2(arr:str, k:int):
+    l=0
+    r=0
+    no=0
+    m=-1
+    ll=len(arr)
+    no_of=dict()
+    while(r<ll):
+        if arr[r] in no_of.keys():
+            no_of[arr[r]]+=1
+        else:
+            no_of[arr[r]]=1
+            no+=1
+        if no>k:
+            while((len(no_of.keys())>k)):#doubt why no l<r
+                no_of[arr[l]]-=1
+                if no_of[arr[l]]==0:
+                    no-=1
+                    no_of.pop(arr[l])
+                    break
+                l+=1
+            l+=1
+        else:
+            m=max(m,r-l+1)
+        r+=1
+    return m
+
+
+# 3. optimal one more
+# tc O(n) sc O(n)
+# similar to 4 optimal one more but here k is given
+def longestSubstringKChar3(arr:list,k:int):
+    l=0
+    r=0
+    no=0
+    m=-1
+    ll=len(arr)
+    no_of=dict()
+    while(r<ll):
+        if arr[r] in no_of.keys():
+            no_of[arr[r]]+=1
+        else:
+            no_of[arr[r]]=1
+            no+=1
+        if no>k:
+            if((len(no_of.keys())>k)):#doubt why no l<r
+                no_of[arr[l]]-=1
+                if no_of[arr[l]]==0:
+                    no-=1
+                    no_of.pop(arr[l])
+                #     break
+                # l+=1
+            l+=1
+        else:
+            m=max(m,r-l+1)
+        r+=1
+    return m
+
+
 
 if __name__=="__main__":
     arr=[6,2,3,4,7,2,1,7,1]
@@ -137,4 +315,10 @@ if __name__=="__main__":
     # print(longestSubstringWithoutRepeat2(s))
     a=[1,1,1,0,0,0,1,1,1,1,0]
     k=2
-    print(maxConsecutiveOnesIII3(a,k))
+    # print(maxConsecutiveOnesIII3(a,k))
+    # arr2=[3,3,3,1,2,1,1,2,3,3,4]
+    # print(fruitIntoBaskets3(arr2))
+    s="aaabbccd"
+    print(longestSubstringKChar3(s,3))
+    print(longestSubstringKChar2(s,3))
+    print(longestSubstringKChar(s,3))

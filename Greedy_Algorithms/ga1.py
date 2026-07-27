@@ -125,7 +125,7 @@ Sensitive to input order: The order of input data can affect the solution genera
 Limited applicability: Greedy algorithms are not suitable for all problems and may not be applicable to problems with complex constraints.
 
 '''
-# 1️⃣ ASSIGN COOKIES
+# 1️⃣ ASSI GN COOKIES
 # parent have n child and m cookies with size 
 # find the max no of child which parent can satisfy by cookies
 # cookie cant be reuse, cookie size>= child greed
@@ -258,4 +258,4 @@ if __name__=="__main__":
     # print(jumoGameI(arr2))
 
     print(jumpGameII(0,0,a))
-    # print(jumpGameII1(a))
+    # print(jumpGameII1(a))  

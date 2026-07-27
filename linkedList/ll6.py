@@ -56,4 +56,4 @@ if __name__=="__main__":
     aa=[1,2,3,4,5]
     h1=convertArrToLl(aa)
     # print(lengthLoop1(h1))
-    print(lengthOfLoop(a))
+    # print(lengthOfLoop(a))

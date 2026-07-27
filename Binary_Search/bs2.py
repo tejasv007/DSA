@@ -130,7 +130,7 @@ def minRotateSortedArray(arr:list,n:int):
     return minVar
 
 
-# 6️⃣
+
 if __name__=="__main__":
     aa=[1,2,3,4,4,5,5,5,5,6,7,8,9]
     l=len(aa)

@@ -35,3 +35,4 @@ def xorNumRange(l:int,r:int):
 # use addition
 # def divideTwoInt(divi:int,divisor:int):
     
+# ----------------------------COMPLETED BIT MANIPULATION (SOME ARE LEFT---(EITHER THEY ARE OUT OF MY UNDERSTANDING OR NEED ANOTHER DATA STRUCTURE OR ALGORITHM WHICH I HAVENT LEARNT YET))

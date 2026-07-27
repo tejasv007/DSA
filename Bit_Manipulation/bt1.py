@@ -132,3 +132,4 @@ if __name__=="__main__":
     # print(decimal2binary(13))
     print(~(-6))
     # print(binary2decimal("1101"))
+    print(int("100",2))

@@ -91,7 +91,7 @@ def countSubsequenceK(n:int,i:int,arr:list,newArr:list,k:int,s:int):
     r=countSubsequenceK(n,i+1,arr,newArr,k,s)
     return l+r
 
-     
+
 if __name__=="__main__":
     # print(fibonacci(3))
     a=[1 ,2 ,1 ,2 ,3 ,2, 3, 4 ,4]
@@ -99,4 +99,8 @@ if __name__=="__main__":
     # subsequencesK2(3,0,a,[],3,0)
     # subsequenceOneK(3,0,a,[],3,0)
     # print(countSubsequenceK(9,0,a,[],9,0))
-    print(subsequence(9,0,a,[]))
+    # print(subsequence(9,0,a,[]))
+    aa= [2,3,-2,4]
+    k=[-10**8]
+    subsequence(4,0,aa,[],k)
+    print(k)
